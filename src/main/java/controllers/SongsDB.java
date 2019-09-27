@@ -42,4 +42,19 @@ public class SongsDB {
             System.out.println("Database error:" + exception.getMessage());
         }
     }
+    public static void updateSongs(String SongID, String SongName, String Artist, String Genre, String Length){
+
+        try{
+            PreparedStatement ps = Main.db.prepareStatement ("UPDATE Playlist SET PlaylistName = x,  WHERE UserID = y");
+            ps.setString(1,SongID);
+            ps.setString(2,SongName);
+            ps.setString(2,Artist);
+            ps.setString(2,Genre);
+            ps.setString(2,Length);
+
+            ps.execute();
+        } catch (Exception exception){;
+            System.out.println("Database error:" + exception.getMessage());
+        }
+    }
 }

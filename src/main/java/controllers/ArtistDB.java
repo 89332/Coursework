@@ -1,5 +1,7 @@
 package controllers;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import server.Main;
 
 public class ArtistDB {
@@ -15,6 +17,26 @@ public class ArtistDB {
 
 
         } catch(Exception exception){;
+            System.out.println("Database error:" + exception.getMessage());
+        }
+    }
+    public static void readArtist (int ArtistID, String Artist, int Followers){
+
+        try {
+            PreparedStatement ps = Main.db.prepareStatement("SELECT FROM Artist (ArtistID, Artist, Followers)" );
+
+            ResultSet results = ps.executeQuery();
+            while (results.next()) {
+                ArtistID = results.getInt(1);
+                Artist = results.getString(2);
+                Followers = results.getInt(3);
+
+                System.out.println("The ArtistID is: " + ArtistID);
+                System.out.println("The Artist Name is: " + Artist );
+                System.out.println("Followers: " + Followers);
+            }
+
+        } catch (Exception exception){;
             System.out.println("Database error:" + exception.getMessage());
         }
     }
