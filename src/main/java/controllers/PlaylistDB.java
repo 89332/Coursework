@@ -48,5 +48,14 @@ public class PlaylistDB {
             System.out.println("Database error:" + exception.getMessage());
         }
     }
+    public static void deletePlaylist(String PlaylistID){
+        try{
+            PreparedStatement ps = server.Main.db.prepareStatement("DELETE FROM Playlist WHERE PlaylistID = ?");
+
+            ps.setString(1,PlaylistID);
+            ps.execute();
+
+        }catch (Exception exception){;
+            System.out.println("Database error:" + exception.getMessage());
 
 }

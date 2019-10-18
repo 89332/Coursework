@@ -56,5 +56,18 @@ public class SongsDB {
         } catch (Exception exception){;
             System.out.println("Database error:" + exception.getMessage());
         }
+
     }
+    public static void deleteSongs(String SongID){
+        try{
+            PreparedStatement ps = server.Main.db.prepareStatement("DELETE FROM Songs WHERE SongId = ?");
+
+            ps.setString(1,SongID);
+            ps.execute();
+
+        }catch (Exception exception){;
+            System.out.println("Database error:" + exception.getMessage());
+    }
+
+
 }

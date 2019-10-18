@@ -40,5 +40,15 @@ public class ArtistDB {
             System.out.println("Database error:" + exception.getMessage());
         }
     }
+    public static void deleteArtist(String ArtistID){
+        try{
+            PreparedStatement ps = server.Main.db.prepareStatement("DELETE FROM Artist WHERE ArtistId = ?");
+
+            ps.setString(1,ArtistID);
+            ps.execute();
+
+        }catch (Exception exception){;
+            System.out.println("Database error:" + exception.getMessage());
+
 
 }
