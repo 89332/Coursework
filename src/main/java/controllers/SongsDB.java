@@ -20,7 +20,7 @@ public class SongsDB {
     public String insertSongs(
             @FormDataParam("SongID") String SongID, @FormDataParam("SongName") String SongName, @FormDataParam("Artist") String Artist, @FormDataParam("Genre") String Genre, @FormDataParam("Length") String Length) {
         try {
-            if (SongID == null || SongName = null || Artist = null || Genre = null || Length = null){
+            if (SongID == null || SongName == null || Artist == null || Genre == null || Length == null){
                 throw new Exception("One or more form data parameters are missing in the HTTP request.");
             }
             System.out.println("Song/new SongID=" + SongID);
@@ -55,10 +55,10 @@ public class SongsDB {
             while (results.next()) {
                 JSONObject item = new JSONObject();
                 item.put("SongID ", results.getInt(1));
-                item.put("SongName ", results.getString(1));
-                item.put("Artist ", results.getString(1));
-                item.put("Genre ", results.getString(1));
-                item.put("Length ", results.getInt(1));
+                item.put("SongName ", results.getString(2));
+                item.put("Artist ", results.getString(3));
+                item.put("Genre ", results.getString(4));
+                item.put("Length ", results.getInt(5));
                 list.add(item);
             }
             return list.toString();
@@ -76,7 +76,7 @@ public class SongsDB {
         @FormDataParam("SongID") String SongID, @FormDataParam("SongName") String SongName, @FormDataParam("Artist") String Artist, @FormDataParam("Genre") String Genre, @FormDataParam("Length") String Length) {
 
         try{
-            if (SongID == null || SongName = null || Artist = null || Genre = null || Length = null){
+            if (SongID == null || SongName == null || Artist == null || Genre == null || Length == null){
                 throw new Exception("One or more form data parameters are missing in the HTTP request.");
 
             }
@@ -84,12 +84,11 @@ public class SongsDB {
             PreparedStatement ps = Main.db.prepareStatement ("UPDATE Playlist SET PlaylistName = x,  WHERE UserID = y");
             ps.setString(1,SongID);
             ps.setString(2,SongName);
-            ps.setString(2,Artist);
-            ps.setString(2,Genre);
-            ps.setString(2,Length);
-            return "{\"status\": \"OK\"}";
-
+            ps.setString(3,Artist);
+            ps.setString(4,Genre);
+            ps.setString(5,Length);
             ps.execute();
+            return "{\"status\": \"OK\"}";
         } catch (Exception exception){;
             System.out.println("Database error:" + exception.getMessage());
             return "{\" error\": \"Unable to list items, please see server console for more info.\"}";
