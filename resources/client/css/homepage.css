@@ -1,0 +1,6 @@
+body {
+    height: 800px;
+    background-image: radial-gradient(lightgray,gray);
+
+    font-family: 'Arial', serif;
+}

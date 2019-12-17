@@ -3,8 +3,10 @@ package controllers;
 import java.lang.annotation.Target;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
-import com.sun.jersey.multipart.FormDataParam;
+
+import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import server.Main;
@@ -14,17 +16,16 @@ import javax.ws.rs.core.MediaType;
 
 public class SongsDB {
     @POST
-    @Path("new")
+    @Path("insert")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
     public String insertSongs(
-            @FormDataParam("SongID") String SongID, @FormDataParam("SongName") String SongName, @FormDataParam("Artist") String Artist, @FormDataParam("Genre") String Genre, @FormDataParam("Length") String Length) {
+            @FormDataParam("SongID") String SongID, @FormDataParam("SongName") String SongName, @FormDataParam("Artist") String Artist, @FormDataParam("Genre") String Genre, @FormDataParam("Length") String Length) throws SQLException {
         try {
-            if (SongID == null || SongName == null || Artist == null || Genre == null || Length == null){
+            if (SongID == null || SongName == null || Artist == null || Genre == null || Length == null) {
                 throw new Exception("One or more form data parameters are missing in the HTTP request.");
             }
-            System.out.println("Song/new SongID=" + SongID);
-
+            System.out.println("songs/insert SongId=" + SongID);
 
 
             PreparedStatement ps = server.Main.db.prepareStatement("INSERT INTO Songs(SongID, SongName, Artist, Genre, Length); VALUES (?,?,?,?)");
@@ -33,9 +34,7 @@ public class SongsDB {
             ps.setString(3,Artist);
             ps.setString(4,Genre);
             ps.setString(5,Length);
-            ps.executeUpdate();
             return "{\"status\": \"OK\"}";
-
         } catch (Exception exception){;
             System.out.println("Database error:" + exception.getMessage());
             return "{\"error\": \"Unable to create new item, please see server console for more info.\"}";

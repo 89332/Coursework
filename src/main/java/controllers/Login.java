@@ -19,22 +19,22 @@ public class Login {
     @Path("login")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String login(@FormDataParam("UserName") String username, @FormDataParam("Password") String password){
+    public String login(@FormDataParam("Username") String Username, @FormDataParam("Password") String Password){
         try{
-            PreparedStatement ps1 = Main.db.prepareStatement("SELECT Password FROM Profiles WHERE UserName= ?");
-            ps1.setString(1, username);
+            PreparedStatement ps1 = Main.db.prepareStatement("SELECT Password FROM Profiles WHERE Username= ?");
+            ps1.setString(1, Username);
             ResultSet loginResults = ps1.executeQuery();
             if (loginResults.next()) {
 
                 String correctPassword = loginResults.getString(1);
 
-                if (password.equals(correctPassword)) {
+                if (Password.equals(correctPassword)) {
 
                     String token = UUID.randomUUID().toString();
 
-                    PreparedStatement ps2 = Main.db.prepareStatement("UPDATE Users SET Token = ? WHERE Username = ?");
+                    PreparedStatement ps2 = Main.db.prepareStatement("UPDATE Profiles SET Token = ? WHERE Username = ?");
                     ps2.setString(1, token);
-                    ps2.setString(2, username);
+                    ps2.setString(2, Username);
                     ps2.executeUpdate();
 
                     return "{\"token\": \""+ token + "\"}";
