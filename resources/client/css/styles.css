@@ -1,90 +1,15 @@
 body {
-    height: 1000px;
+    height: 800px;
     background-image: radial-gradient(lightgray,gray);
 
     font-family: 'Arial', serif;
 }
 
-
-html, form{
-
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    }
-    input[type=text]{
-        height: 30px;
-        width: 200px;
-        padding-left: 10px;
-        border: 1px solid #cccccc;
-        box-sizing: border-box;
-        border-radius: 4px;
-        margin: 20px 0 20px 18px;
-
-    }
-    input[type=password]{
-        height: 30px;
-        width: 200px;
-        padding-left: 10px;
-        border: 1px solid #cccccc;
-        box-sizing: border-box;
-        border-radius: 4px;
-        margin: 20px 0 20px 18px;
-        box-shadow: inset 0 1.5px 3px rgba(190,190,190,0.4), 0 0 0 3px #cccccc;
-
-    }
-
-#container {
-    border: 2px solid #4d4d4d;
-    width: 360px;
-    height: 330px;
-    top: 50%;
-    left: 50%;
-    position: fixed;
-    box-shadow: inset 0 1px 3px rgba(190,190,190,0.4), 2px 2px 2px 2px #4d4d4d;
-    margin-top: -140px;
-    margin-left: -170px;
-    border-radius: 4px;
-
-}
-form{
-    margin: 20px auto 0;
-}
-label{
-    color: #777777;
-    display: inline-block;
-    margin-left: 18px;
-    padding-top: 10px;
-    font-size: 14px;
-}
-input{
-    font-size: 12px;
-    outline: none;
-}
-input[type=submit]{
-    float: bottom;
-    margin-right: 20px;
-    margin-top: 20px;
+#content {
+    float: right;
     width: 180px;
     height: 30px;
-    border-radius: 4px;
-
 }
-
-input[type=button]{
-    float: left;
-    margin-bottom: -20px;
-}
-#loggedInDetails{
-    margin: 0;
-    text-align: right;
-    display: inline;
-    float: right;
-}
-
-
-
-
 
 
 

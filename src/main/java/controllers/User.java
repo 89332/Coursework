@@ -26,7 +26,7 @@ public class User {
 
             System.out.println("profiles/login");
 
-            PreparedStatement ps1 = Main.db.prepareStatement("SELECT Password FROM Profiles WHERE Username = ?");
+            PreparedStatement ps1 = Main.db.prepareStatement("SELECT password FROM Profiles WHERE username = ?");
             ps1.setString(1, username);
             ResultSet loginResults = ps1.executeQuery();
             if (loginResults.next()) {
@@ -36,7 +36,7 @@ public class User {
 
                     String token = UUID.randomUUID().toString();
 
-                    PreparedStatement ps2 = Main.db.prepareStatement("UPDATE Profiles SET Token = ? WHERE Username = ?");
+                    PreparedStatement ps2 = Main.db.prepareStatement("UPDATE Profiles SET Token = ? WHERE username = ?");
                     ps2.setString(1, token);
                     ps2.setString(2, username);
                     ps2.executeUpdate();
@@ -45,6 +45,7 @@ public class User {
                     userDetails.put("username", username);
                     userDetails.put("token", token);
                     return userDetails.toString();
+
 
                 } else {
                     return "{\"error\": \"Incorrect password!\"}";
