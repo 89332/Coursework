@@ -56,7 +56,7 @@ public class User {
 
         } catch (Exception exception) {
             System.out.println("Database error during /user/login: " + exception.getMessage());
-            return "{\"error\": \"Server side error!\"}";
+                return "{\"error\": \"Server side error!\"}";
         }
     }
     @POST
