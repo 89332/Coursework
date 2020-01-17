@@ -8,7 +8,25 @@
 </head>
 <body onload="pageLoad()">
 <div id="container">
-    <div id="testDiv"></div>
+    <div id="content">
+        <h1>Please log in to continue...</h1>
+        <hr />
+        <form id="loginForm">
+            <div class="loginDiv">
+                <label for="username">Username: </label>
+                <input type="text" name=@FormDataParams("username") id="username">
+            </div>
+            <div class="loginDiv">
+                <label for="password">Password: </label>
+                <input type="password" name=@FormDataParams("password") id="password">
+            </div>
+            <div class="loginDiv">
+                <input type="submit" value="Login" id="loginButton">
+                <p>Need to create an account?<a href='/client/createAccount.html'>Click here</a></p>
+            </div>
+        </form>
+    </div>
+
 
 </div>
 </body>

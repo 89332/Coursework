@@ -17,15 +17,15 @@ public class ProfileDB {
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
     public String createProfile(
-            @FormDataParam("ProfileID") String ProfileID, @FormDataParam("username") String username, @FormDataParam("Firstname") String FirstName, @FormDataParam("LastName") String LastName, @FormDataParam("DOB") String DOB) {
+            @FormDataParam("UserID") String UserID, @FormDataParam("username") String username, @FormDataParam("Firstname") String FirstName, @FormDataParam("LastName") String LastName, @FormDataParam("DOB") String DOB) {
         try {
-            if (ProfileID == null || username == null || FirstName == null || LastName == null || DOB == null) {
+            if (UserID == null || username == null || FirstName == null || LastName == null || DOB == null) {
                 throw new Exception("One or more form data parameters are missing in the HTTP request.");
             }
-            System.out.println("profile/new id=" + ProfileID);
+            System.out.println("profile/new id=" + UserID);
 
-            PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Profile(ProfileID, UserName, FirstName, LastName, DOB); VALUES (?,?,?,?,?)");
-            ps.setString(1,ProfileID);
+            PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Users(UserID, UserName, FirstName, LastName, DOB); VALUES (?,?,?,?,?)");
+            ps.setString(1,UserID);
             ps.setString(2,username);
             ps.setString(3,FirstName);
             ps.setString(4,LastName);
@@ -43,15 +43,15 @@ public class ProfileDB {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public String listProfiles() {
-        System.out.println("profiles/list");
+        System.out.println("user/list");
         JSONArray list = new JSONArray();
         try {
-            PreparedStatement ps = Main.db.prepareStatement("SELECT FROM Profiles (ProfileID, UserName, FirstName, LastName, DOB)" );
+            PreparedStatement ps = Main.db.prepareStatement("SELECT FROM Users (UserID, UserName, FirstName, LastName, DOB)" );
 
             ResultSet results = ps.executeQuery();
             while (results.next()) {
                 JSONObject item = new JSONObject();
-                item.put("ProfileID", results.getInt(1));
+                item.put("UserID", results.getInt(1));
                 item.put("UserName", results.getString(2));
                 item.put("FirstName", results.getString(2));
                 item.put("LastName", results.getString(2));

@@ -19,6 +19,7 @@ function createAccount(){
             +'<input type="password" id="cpsw" placeholder="Confirm your password" name="cpsw" required/><br>'
                         +'<div id="lower">'
                             +'<input type="submit" value="Create account" id="createAccount"/>'
+                            +'<p> <a href=\'/client/login.html\'>Return to login page</a></p>'
                             +'<button type="button" onclick="document.getElementById(\'container\').style.display=\'none\'" class="cancelbtn">Cancel</button>'
                         +'</div>'
              +'</form>'

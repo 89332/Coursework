@@ -13,7 +13,7 @@ import server.Main;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-
+@Path("/songs/")
 public class SongsDB {
     @POST
     @Path("insert")

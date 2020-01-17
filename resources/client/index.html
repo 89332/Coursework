@@ -9,9 +9,45 @@
 
 <body onload="pageLoad()">
 
-<p><a href="/client/login.html"/>Login</p>
+<p> <a href='/client/login.html'>Log in</a></p>
 <div id ="content">
-    <input type="text" value="Search for a song"><br>
+    <div id="pageHeader">
+        <div id="loggedInDetails"></div>
+        <h1>All the CRUD ops demoed with Fruit!</h1>
+    </div>
+
+    <div id="listDiv"></div>
+
+    <div id="editDiv">
+        <h2 id="Hello"></h2>
+        <form id="songForm">
+            <input type="hidden" name="id" id="songID">
+            <div>
+                <label for="SongName" class="label">Name:</label>
+                <input type="text" name="name" id="SongName">
+            </div>
+            <div>
+                <label for="Artist" class="label">Image:</label>
+                <input type="text" name="image" id="Artist">
+            </div>
+            <div>
+                <label for="Genre" class="label">Colour:</label>
+                <input type="text" name="colour" id="Genre">
+            </div>
+            <div>
+                <label for="Length" class="label">Size:</label>
+                <input type="text" name="size" id="Length">
+            </div>
+            <div>
+                <input type="submit" value="Save" id="saveButton">
+                <input type="submit" value="Cancel" id="cancelButton">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+<input type="text" value="Search for a song"><br>
     <input type="submit" value="Search">
 </div>
 <div id ="bottom"></div>
