@@ -47,8 +47,31 @@
 </div>
 </body>
 
-<input type="text" value="Search for a song"><br>
-    <input type="submit" value="Search">
+<form action="">
+    <input type="search" onchange ="showCustomer(this.value)" placeholder="Search for something..">
+</form>
+<br>
+<div id="txtHint">Song info will be listed here...</div>
+
+<script>
+    function showCustomer(str) {
+        let xhttp;
+        if (str == "") {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+        }
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "/songs/list"+str, true);
+        xhttp.send();
+    }
+</script>
+
+
 </div>
 <div id ="bottom"></div>
 <style>
